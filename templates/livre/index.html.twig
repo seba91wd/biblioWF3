@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des livres
+{% endblock %}
+
+{% block body %}
+	<table class="table table-bordered">
+		<thead class="thead-dark">
+			<tr>
+				<td>ID</td>
+				<td>Titre</td>
+				<td>Couverture</td>
+				<td>Résumé</td>
+				<th>
+					<i class="fa fa-cog"></i>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for livre in livres %}
+				<tr>
+					<td>{{ livre.id }}</td>
+					<td>{{ livre.titre }}</td>
+					<td>{{ livre.couverture }}</td>
+					<td>{{ livre.resume }}</td>
+					<td>
+						<a href="{{ path("app_livre_modifier", {id: livre.id}) }}">
+							<i class="fa fa-edit"></i>
+						</a>
+						<a href="{{ path("app_livre_supprimer", {id: livre.id}) }}">
+							<i class="fa fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucun livre enregistré</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

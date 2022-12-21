@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace lecteur{% endblock %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>Pseudo : </strong> {{ app.user.pseudo }}
+    </li>
+    <li class="list-group-item">
+        <strong>Identité : </strong> {{ app.user.prenom ~ " " ~ app.user.nom }}
+    </li>
+</ul>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <th>Livre</th>
+        <th>Emprunté le</th>
+        <th>Rendu le</th>
+    </thead>
+    <tbody>
+        {% for e in app.user.emprunts %}
+            <tr>
+                <td>{{ e.livre.titre }} <i>{{ e.livre.auteur.identite }}</i></td>
+                <td>{{ e.sortie|date() }}</td>
+                <td>{{ e.retour ?e.retour|date() : "à rendre" }}</td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colapse='3' class='alert alert-info'>Aucun emprunt</td>
+                </tr>
+        {% endfor %}
+    </tbody>
+</table>
+  
+{% endblock %}

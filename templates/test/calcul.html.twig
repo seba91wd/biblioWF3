@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p>
+    {{nb1}} + {{nb2}} = {{ nb1 + nb2 }}<br>
+    {{nb1}} - {{nb2}} = {{ nb1 - nb2 }}<br>
+    {{nb1}} * {{nb2}} = {{ nb1 * nb2 }}<br>
+    {% if nb2 == 0 %}
+    <br>
+    division par 0 impossible
+    {% else %}
+    
+
+    {{nb1}} / {{nb2}} = {{ nb1 / nb2 }}
+    {% endif %}
+</p>
+
+<ul>
+    <li>{{nb1}} + {{nb2}} = {{nb1 + nb2}}</li>
+    <li>{{nb1}} - {{nb2}} = {{nb1 - nb2}}</li>
+    <li>{{nb1}} / {{nb2}} = {{nb1 / nb2}}</li>
+    <li>{{nb1}} * {{nb2}} = {{nb1 * nb2}}</li>
+</ul>
+{% endblock %}

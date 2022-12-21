@@ -1,0 +1,12 @@
+{# Les messages flash peuvent etre récupérer avec la variable 'app'
+    app.flashes est un array associatif. les indices sont les types des message, choisis quand vous avez utilisé la fonction 'addFlash' dans un controleur.
+    Chaque valeur est un array qui peut contenir plusieurs messages.
+#}
+
+{% for type, messages in app.flashes %}
+    {% for msg in messages %}
+        <div class="alert alert-{{ type }}">
+            {{ msg }}
+        </div>
+    {% endfor %}
+{% endfor %}
